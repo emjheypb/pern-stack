@@ -35,13 +35,18 @@ npm i typescript ts-node nodemon -D
 ```
 
 **helmet** - middleware to protect the app by setting HTTP headers\
-**morgan** - log requests
+**morgan** - log requests\
+**neon** - database\
+**arcjet** - security
 
 ### Backend
 1. server.ts
 2. /routes - create a route file
 3. /controllers - create a controller file
-4. /config/db.ts - SQL connection (use this in server.ts to connect to the DB)
+4. /config/db.ts - SQL connection (initialize in server.ts; apply to routes and controllers)
+5. /controllers - create db functions
+6. /routes - create endpoints accessing db functions
+7. /lib/arcjet.ts - security services (implement in server.ts)
 
 > [!CAUTION]
 > TODO: replace raw sql with orm (drizzle?)
