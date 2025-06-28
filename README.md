@@ -40,7 +40,8 @@ npm i typescript ts-node nodemon -D
 ### Backend
 1. server.ts
 2. /routes - create a route file
-2. /controllers - create a controller file
+3. /controllers - create a controller file
+4. /config/db.ts - SQL connection (use this in server.ts to connect to the DB)
 
 > [!CAUTION]
 > TODO: replace raw sql with orm (drizzle?)
