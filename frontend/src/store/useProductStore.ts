@@ -43,7 +43,7 @@ export interface ProductZustand {
   updateProduct: (id: Number) => void;
 }
 
-const BASE_URL = "http://localhost:3000/api/products";
+const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:3000/api/products": "/api/products";
 
 export const formatDate = (date: Date) => {
   const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed, so add 1

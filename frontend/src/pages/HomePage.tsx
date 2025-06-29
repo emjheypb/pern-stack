@@ -55,7 +55,7 @@ function HomePage() {
         </div>
       )}
 
-      {!loading && !error && products.length === 0 && (
+      {!loading && !error && products && products.length === 0 && (
         <div className="flex flex-col items-center justify-center h-96 gap-2">
           <div className="">
             <PackageIcon className="size-12 text-base-content" />
