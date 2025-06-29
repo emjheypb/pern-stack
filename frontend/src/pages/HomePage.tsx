@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { type Product, useProductStore } from "../store/useProductStore";
-import { PlusCircleIcon, RefreshCwIcon } from "lucide-react";
+import { PlusCircleIcon, RefreshCwIcon, SmileIcon } from "lucide-react";
 import ProductCard from "../components/ProductCard";
 
 function HomePage() {
@@ -28,7 +28,7 @@ function HomePage() {
       </div>
 
       {loading && (
-        <div className="flex justify-center items-center h-64">
+        <div className="flex justify-center">
           <div className="loading loading-spinner loading-lg" />
         </div>
       )}
@@ -39,6 +39,17 @@ function HomePage() {
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
+        </div>
+      )}
+      
+      {!loading && !error && products.length === 0 && (
+        <div className="bg-primary/50 p-8 rounded-2xl flex flex-col items-center shadow-2xl">
+          <p className="text-xl text-primary-content font-extrabold">
+            Out of Stock
+          </p>
+          <p className="text-xs text-secondary-content flex items-center gap-1">
+            We're working on it! <SmileIcon className="size-3" />
+          </p>
         </div>
       )}
     </main>
