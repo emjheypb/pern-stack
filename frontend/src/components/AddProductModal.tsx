@@ -193,7 +193,7 @@ function AddProductModal() {
                 </div>
                 <input
                   type="text"
-                  placeholder="e.g. category, brand, etc. then press Enter"
+                  placeholder="Press ↵ to add tag (e.g. category, brand, etc.)"
                   className="input input-bordered w-full pl-10 py-3 focus:input-primary transition-colors duration-200"
                   value={tag}
                   onChange={(e) => setTag(e.target.value)}

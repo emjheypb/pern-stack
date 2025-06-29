@@ -257,7 +257,7 @@ function ProductPage() {
                   </div>
                   <input
                     type="text"
-                    placeholder="e.g. category, brand, etc. then press Enter"
+                    placeholder="Press ↵ to add tag (e.g. category, brand, etc.)"
                     className="input input-bordered w-full pl-10 py-3 focus:input-primary transition-colors duration-200"
                     value={tag}
                     onChange={(e) => setTag(e.target.value)}
@@ -336,7 +336,7 @@ function ProductPage() {
               </div>
 
               {/* FORM ACTIONS */}
-              <div className="flex justify-between mt-8">
+              <div className="flex flex-col gap-2 lg:flex-row justify-between mt-8">
                 <button
                   type="button"
                   onClick={handleDelete}
