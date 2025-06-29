@@ -31,14 +31,14 @@ cd frontend
 npm create vite@latest .
 npm i
 ```
-2. [https://tailwindcss.com/docs/installation/using-vite]Tailwind Setup
-3. [https://daisyui.com/docs/install/]DaisyUI Setup (recommended: apply [https://daisyui.com/docs/themes/]themes)
+2. [Tailwind Setup](https://tailwindcss.com/docs/installation/using-vite)
+3. [DaisyUI Setup](https://daisyui.com/docs/install/) (recommended: apply [themes](https://daisyui.com/docs/themes/))
 4. Install other dependencies:
-    - **[https://react-hot-toast.com/]react-hot-toast** - toast notifications
-    - **[https://reactrouter.com/]react-router-dom** - navigation
-    - **[https://axios-http.com/docs/intro]axios** - API calls
-    - **[https://zustand-demo.pmnd.rs/]zustand** - global states
-    - **[https://lucide.dev/guide/packages/lucide-react]lucide-react** - icons
+    - **[react-hot-toast](https://react-hot-toast.com/)** - toast notifications
+    - **[react-router-dom](https://reactrouter.com/)** - navigation
+    - **[axios](https://axios-http.com/docs/intro)** - API calls
+    - **[zustand](https://zustand-demo.pmnd.rs/)** - global states
+    - **[lucide-react](https://lucide.dev/guide/packages/lucide-react)** - icons
 ```
 npm i react-hot-toast react-router-dom axios zustand lucide-react
 ```
