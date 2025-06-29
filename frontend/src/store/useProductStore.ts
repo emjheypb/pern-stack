@@ -17,7 +17,7 @@ export interface Product {
 
 const BASE_URL = "http://localhost:3000";
 
-export const useProductStore = create((set, get) => ({
+export const useProductStore = create((set) => ({
   products: [],
   loading: false,
   error: null,
