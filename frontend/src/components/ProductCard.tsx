@@ -31,6 +31,9 @@ function ProductCard({ product }: { product: Product }) {
           <p className="text-2xl font-bold text-primary">
             ${Number(product.price).toFixed(2)}
           </p>
+          <p className="text-xs text-primary">
+            {Number(product.quantity)} stock left
+          </p>
         </Link>
 
         {/* CARD ACTIONS */}
