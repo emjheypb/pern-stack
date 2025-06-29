@@ -81,7 +81,6 @@ export const updateProduct = async (req: Request, res: Response) => {
   const updates: string[] = [];
 
   try {
-    let setStatements = "";
     Object.entries(req.body).forEach(([key, value], index) => {
       if (["id", "created_date"].includes(key.toLowerCase())) return;
       updates.push(
@@ -90,6 +89,11 @@ export const updateProduct = async (req: Request, res: Response) => {
         }`
       );
     });
+    if (!updates.some((set) => set.includes("expires_at")))
+      updates.push("expires_at=null");
+    if (!updates.some((set) => set.includes("best_before")))
+      updates.push("best_before=null");
+
     const updatedProduct = await sql`
     UPDATE products
     SET ${sql.unsafe(updates.join(", "))}
