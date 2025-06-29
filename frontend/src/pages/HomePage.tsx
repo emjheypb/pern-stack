@@ -2,11 +2,12 @@ import { useEffect } from "react";
 import { type Product, useProductStore } from "../store/useProductStore";
 import {
   PackageIcon,
-  PlusCircleIcon,
+  PackagePlusIcon,
   RefreshCwIcon,
   SmileIcon,
 } from "lucide-react";
 import ProductCard from "../components/ProductCard";
+import AddProductModal from "../components/AddProductModal";
 
 function HomePage() {
   const { products, loading, error, fetchProducts } = useProductStore() as {
@@ -18,13 +19,21 @@ function HomePage() {
 
   useEffect(() => {
     fetchProducts();
-  }, [fetchProducts]);
+  }, []);
 
   return (
     <main className="max-w-7xl mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-8">
-        <button className="btn btn-primary">
-          <PlusCircleIcon className="size-5 mr-2" />
+        <button
+          className="btn btn-primary"
+          onClick={() =>
+            (
+              document.getElementById(
+                "add_product_modal"
+              ) as HTMLDialogElement | null
+            )?.showModal()
+          }>
+          <PackagePlusIcon className="size-5 mr-2" />
           Add Product
         </button>
         <button className="btn btn-ghost btn-circle" onClick={fetchProducts}>
@@ -37,6 +46,9 @@ function HomePage() {
           <div className="loading loading-spinner loading-lg" />
         </div>
       )}
+
+      <AddProductModal />
+
       {error && <div className="alert alert-error mb-8">{error}</div>}
 
       {!loading && !error && products && (
