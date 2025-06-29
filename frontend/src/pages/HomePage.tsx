@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { type Product, useProductStore } from "../store/useProductStore";
+import { type ProductZustand, useProductStore } from "../store/useProductStore";
 import {
   PackageIcon,
   PackagePlusIcon,
@@ -10,12 +10,8 @@ import ProductCard from "../components/ProductCard";
 import AddProductModal from "../components/AddProductModal";
 
 function HomePage() {
-  const { products, loading, error, fetchProducts } = useProductStore() as {
-    products: Product[];
-    loading: boolean;
-    error: string;
-    fetchProducts: () => void;
-  };
+  const { products, loading, error, fetchProducts } =
+    useProductStore() as ProductZustand;
 
   useEffect(() => {
     fetchProducts();

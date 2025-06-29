@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
-import { useProductStore, type Product } from "../store/useProductStore";
+import {
+  useProductStore,
+  type Product,
+  type ProductZustand,
+} from "../store/useProductStore";
 import { EditIcon, ImageIcon, PlusIcon, TrashIcon } from "lucide-react";
 
 function ProductCard({ product }: { product: Product }) {
-  const { deleteProduct } = useProductStore() as {
-    deleteProduct: (id: number) => void;
-  };
+  const { deleteProduct } = useProductStore() as ProductZustand;
 
   return (
     <div className="card bg-base-100 shadow-md hover:shadow-2xl transition-shadow duration-100">

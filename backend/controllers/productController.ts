@@ -57,7 +57,7 @@ export const createProduct = async (req: Request, res: Response) => {
     return;
   }
 
-  const now = new Date(Date.now()).toISOString();
+  const now = new Date(Date.now()).toLocaleString();
 
   try {
     const newProduct = await sql`
@@ -82,7 +82,7 @@ export const updateProduct = async (req: Request, res: Response) => {
 
   try {
     Object.entries(req.body).forEach(([key, value], index) => {
-      if (["id", "created_date"].includes(key.toLowerCase())) return;
+      if (["id", "created_date", "updated_at"].includes(key.toLowerCase())) return;
       updates.push(
         `${key}=${typeof value === "string" ? "'" : ""}${value}${
           typeof value === "string" ? "'" : ""
@@ -93,6 +93,7 @@ export const updateProduct = async (req: Request, res: Response) => {
       updates.push("expires_at=null");
     if (!updates.some((set) => set.includes("best_before")))
       updates.push("best_before=null");
+    updates.push(`updated_at='${new Date(Date.now()).toLocaleString()}'`);
 
     const updatedProduct = await sql`
     UPDATE products

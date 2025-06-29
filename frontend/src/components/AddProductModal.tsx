@@ -9,23 +9,12 @@ import {
   CalendarClockIcon,
   XIcon,
 } from "lucide-react";
-import {
-  useProductStore,
-  type CreateProduct,
-  type Product,
-} from "../store/useProductStore";
+import { useProductStore, type ProductZustand } from "../store/useProductStore";
 import { useEffect, useState } from "react";
 
 function AddProductModal() {
   const { loading, addProduct, formData, setFormData, resetForm, products } =
-    useProductStore() as {
-      loading: boolean;
-      addProduct: () => void;
-      formData: CreateProduct;
-      setFormData: (formData: CreateProduct) => void;
-      resetForm: () => void;
-      products: Product[];
-    };
+    useProductStore() as ProductZustand;
   const [tags, setTags] = useState<string[]>([]);
   const [tag, setTag] = useState<string>("");
 
@@ -53,6 +42,10 @@ function AddProductModal() {
   useEffect(() => {
     setTags([]);
   }, [products]);
+
+  useEffect(() => {
+    resetForm();
+  }, []);
 
   return (
     <dialog id="add_product_modal" className="modal">
