@@ -35,7 +35,7 @@ app.use(async (req, res, next) => {
 
     if (
       decision.results.some(
-        (result) => result.reason.isBot() && result.reason.isSpoofed
+        (result) => result.reason.isBot() && result.reason.isSpoofed()
       )
     ) {
       res.status(403).json({ success: false, message: "Spoofed Bot Detected" });
