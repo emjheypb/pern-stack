@@ -45,3 +45,5 @@ npm i react-hot-toast react-router-dom axios zustand lucide-react
 5. Implement react-router-dom in main.tsx
 6. /pages
 7. /components
+8. /constants
+9. /store
