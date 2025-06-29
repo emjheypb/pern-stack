@@ -2,7 +2,7 @@ import arcjet, { shield, detectBot, tokenBucket } from "@arcjet/node";
 import "dotenv/config";
 
 export const aj = arcjet({
-  key: process.env.ARCJECT_KEY || "",
+  key: process.env.ARCJET_KEY || "",
   characteristics: ["ip.src"],
   rules: [
     shield({ mode: "LIVE" }), // protects app from common attacks e.g. SQL injection, XSS, CSRFP
