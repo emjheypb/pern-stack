@@ -3,6 +3,8 @@ import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
 import dotenv from "dotenv";
+import path from "path";
+
 import productRoutes from "./routes/productRoutes.ts";
 import { sql } from "./config/db.ts";
 import { aj } from "./lib/arcjet.ts";
@@ -10,11 +12,16 @@ import { aj } from "./lib/arcjet.ts";
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
+const __dirname = path.resolve();
 
 const app = express();
 app.use(express.json()); // Parse JSON bodies
 app.use(cors());
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
 app.use(morgan("dev"));
 
 app.use(async (req, res, next) => {
@@ -35,7 +42,7 @@ app.use(async (req, res, next) => {
 
     if (
       decision.results.some(
-        (result) => result.reason.isBot() && result.reason.isSpoofed
+        (result) => result.reason.isBot() && result.reason.isSpoofed()
       )
     ) {
       res.status(403).json({ success: false, message: "Spoofed Bot Detected" });
@@ -49,6 +56,13 @@ app.use(async (req, res, next) => {
 });
 
 app.use("/api/products", productRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve("frontend/dist", "index.html"));
+  });
+}
 
 const initDB = async () => {
   try {
@@ -80,6 +94,6 @@ initDB().then(() => {
   });
 });
 
-app.get("/", (req, res) => {
-  res.send({ message: "HELLO WORLD!" });
-});
+// app.get("/test", (req, res) => {
+//   res.send({ message: "HELLO WORLD!" });
+// });
