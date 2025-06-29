@@ -26,10 +26,10 @@ npm run dev
 
 # Guide
 1. Install dependencies
-    - **[https://www.npmjs.com/package/helmet]helmet** - middleware to protect the app by setting HTTP headers\
-    - **[https://www.npmjs.com/package/morgan]morgan** - log requests\
-    - **[https://neon.com/docs/guides/node]neon** - database\
-    - **[https://arcjet.com/]arcjet** - security
+    - **[helmet](https://www.npmjs.com/package/helmet)** - middleware to protect the app by setting HTTP headers\
+    - **[morgan](https://www.npmjs.com/package/morgan)** - log requests\
+    - **[neon](https://neon.com/docs/guides/node)** - database\
+    - **[arcjet](https://arcjet.com/)** - security
 ```
 npm init -y
 npm i express dotenv cors helmet morgan @neondatabase/serverless @arcjet/node
