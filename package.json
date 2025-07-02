@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon backend/server.ts",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
-    "start": "node backend/server.ts"
+    "start": "npx tsx backend/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +26,7 @@
   "devDependencies": {
     "@types/express": "^5.0.3",
     "nodemon": "^3.1.10",
+    "tsx": "^4.20.3",
     "typescript": "^5.8.3"
   }
 }
